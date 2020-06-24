@@ -1,0 +1,17 @@
+<h1>Create your Task</h1>
+
+<form action="/create/" method="post">
+    {% csrf_token %}
+    <input type="text" placeholder="Create Task" name="title" id="title">
+    <select name="user_id" size="1" id="user_id">
+        {% for item in data %}
+            <option value="{{ item.id }}" selected="selected">{{item.username}}</option>
+        {% endfor %}
+    </select>
+    <select name="status" size="1" id="status">
+        <option value="all" selected="selected">Status</option>
+        <option value="open">Open</option>
+        <option value="closed">Closed</option>
+    </select>
+    <input type="submit" value="ok">
+</form>

@@ -1,0 +1,17 @@
+<h1>Edit your Task</h1>
+
+<form action="/edit/{{data.task_id}}" method="post">
+    {% csrf_token %}
+    <input value="{{data.title}}" placeholder="Edit Task" name="title" id="title">
+    <select name="user_id" size="1" value = "{{data.user_id}}" id="user_id">
+        {% for item in users %}
+            <option value="{{ item.id }}" selected="{% if data.user_id == item.id %} {% endif %}">{{item.username}}</option>
+        {% endfor %}
+    </select>
+    <select name="status" size="1" value="{{data.status}}" id="status">
+        <option value="all" selected="{% if data.status == data.status %} {% endif %}">Status</option>
+        <option value="open" selected="{% if data.status == data.status %} {% endif %}">Open</option>
+        <option value="closed" selected="{% if data.status == data.status %} {% endif %}">Closed</option>
+    </select>
+    <input type="submit" value="ok">
+</form>

@@ -1,0 +1,44 @@
+<h1>TASK DASHBOARD</h1>
+
+<h2>List of tasks</h2>
+
+<a href="/create/"><h3>Create Task</h3></a>
+
+<br>
+<table style="width: 75%; border-collapse: collapse">
+    <tr>
+      <th style="text-align: left; border: 1px solid #dddddd;">Title</th>
+      <th style="text-align: left; border: 1px solid #dddddd;">Assignee</th>
+      <th style="text-align: left; border: 1px solid #dddddd;">Status</th>
+      <th style="text-align: left; border: 1px solid #dddddd;">Actions</th>
+    </tr>
+    {% for item in data %}
+        <tr>
+        <td style="border: 1px solid #dddddd;">{{item.title}}</td>
+        <td style="border: 1px solid #dddddd;">{{item.username}}</td>
+        <td style="border: 1px solid #dddddd;">
+            {% if item.status != 'closed' %}
+                <div>
+                    {{item.status}}
+                </div>
+            {% else %}
+                <div>
+                    <button>
+                        <a href="{% url 'reopen' item.task_id %}">Reopen</a>
+                    </button>
+                </div>
+            {% endif %}
+        </td>
+        <td style="border: 1px solid #dddddd;">
+            <div>
+                <button>
+                    <a href="{% url 'edit' item.task_id %}">Edit</a>
+                </button>
+                <button>
+                    <a href="{% url 'delete' item.task_id %}">Delete</a>
+                </button>
+            </div>
+        </td>
+        </tr>
+    {% endfor %}
+</table>

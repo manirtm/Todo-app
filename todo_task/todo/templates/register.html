@@ -1,0 +1,22 @@
+{% extends 'index.html'%}
+{%block page %}
+<div class="container p-3 my-3 border">
+    <h1><center>Registration</center></h1><br><br>
+
+    <form action="/register/" method="post">
+        <div class="conatiner p-3 my-3 border">
+        {% csrf_token %}
+        <label for="username" class="col-md-1.5"><b>Username:</b></label>
+        <input id="username" class="col-md-3" type="text" name="username" required><br>
+
+        <label for="password" class="col-md-1.5"><b>Password:</b></label>
+        <input id="password" class="col-md-3" type="text" name="password" required><br>
+
+        <label for="password" class="col-md-1.5"><b>Confirm Password:</b></label>
+        <input id="re-password" class="col-md-3" type="text" name="password" required><br>
+        </div>
+
+        <input type="submit" value="OK" class="btn btn-success">
+    </form>
+</div>
+{%endblock%}
